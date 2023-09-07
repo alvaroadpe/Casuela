@@ -103,7 +103,7 @@ public class timerActivity extends AppCompatActivity {
                     nextPlayerPopUp.setMessage("Has baby adivinado todas las palabras, pero te sobran " + seconds +
                             " segundos que podras usar en la siguiente ronda. \n \n")
                             .setCancelable(false)
-                            .setPositiveButton("Siguiente ronda gaaaaaaayyyyyyyyyy!!11111", new DialogInterface.OnClickListener() {
+                            .setPositiveButton("Siguiente ronda", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int intDialogPositive) {
                                     //finish();
