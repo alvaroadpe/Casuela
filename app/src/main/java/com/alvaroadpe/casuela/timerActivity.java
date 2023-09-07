@@ -100,7 +100,7 @@ public class timerActivity extends AppCompatActivity {
 
                     if(seconds == 0){seconds = 1;}
                     AlertDialog.Builder nextPlayerPopUp = new AlertDialog.Builder(timerActivity.this);
-                    nextPlayerPopUp.setMessage("Has adivinado todas las palabras, pero te sobran " + seconds +
+                    nextPlayerPopUp.setMessage("Has baby adivinado todas las palabras, pero te sobran " + seconds +
                             " segundos que podras usar en la siguiente ronda. \n \n")
                             .setCancelable(false)
                             .setPositiveButton("Siguiente ronda gaaaaaaayyyyyyyyyy!!11111", new DialogInterface.OnClickListener() {
