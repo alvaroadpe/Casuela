@@ -45,6 +45,7 @@ public class timerActivity extends AppCompatActivity {
 
 
         resetTimerActivity();
+        startRound();
 
         Log.d("informacion","timer activity iniciada");
     }
@@ -94,52 +95,11 @@ public class timerActivity extends AppCompatActivity {
             else{
 
                 if (round < 3){
-                    wordList = new ArrayList(teams.getWordsList());
-                    Collections.shuffle(wordList);
                     round++;
-
-                    if(seconds == 0){seconds = 1;}
-                    AlertDialog.Builder nextPlayerPopUp = new AlertDialog.Builder(timerActivity.this);
-                    nextPlayerPopUp.setMessage("All the words have been guessed. You still have " + seconds +
-                            " seconds for the next round. \n \n")
-                            .setCancelable(false)
-                            .setPositiveButton("Next Round", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int intDialogPositive) {
-                                    //finish();
-                                    dialogInterface.cancel();
-                                }
-                            })
-                            .setNegativeButton("Read Rules", new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialogInterface, int intDialogNegative) {
-                                    AlertDialog.Builder nextPlayerPopUp2 = new AlertDialog.Builder(timerActivity.this);
-                                    nextPlayerPopUp2.setMessage( roundName(round)[1] +
-                                            System.getProperty("line.separator"))
-                                            .setCancelable(false)
-                                            .setPositiveButton("Start Round", new DialogInterface.OnClickListener() {
-                                                @Override
-                                                public void onClick(DialogInterface dialogInterface2, int intDialogPositive2) {
-
-                                                    dialogInterface2.cancel();
-                                                }
-                                            });
-
-                                    AlertDialog title2 = nextPlayerPopUp2.create();
-                                    title2.setTitle("Rules Round " + round + ": " + roundName(round)[0]);
-                                    title2.show();
-
-                                    dialogInterface.cancel();
-
-                                }
-                            });
-
-                    AlertDialog title = nextPlayerPopUp.create();
-                    title.setTitle("Change to Round " + round + ": " + roundName(round)[0]);
-                    title.show();
-                    cancelTimer();
+                    startRound();
                 }
 
-                else{restartGame();}
+                else{ restartGame(); }
 
 
             }
@@ -198,6 +158,8 @@ public class timerActivity extends AppCompatActivity {
         ((Button)findViewById(R.id.guessedWordButton)).setEnabled(false);
         ((Button)findViewById(R.id.scoreButton)).setEnabled(true);
 
+        Collections.shuffle(wordList);
+
         ((TextView)findViewById(R.id.roundTextView))
                 .setText("Round " + round + ": " + roundName(round)[0]);
         ((TextView)findViewById(R.id.playerTurnTextView))
@@ -220,6 +182,64 @@ public class timerActivity extends AppCompatActivity {
         ((Button)findViewById(R.id.startButton)).setText("Restart the game");
 
         watchScores();
+    }
+
+
+    public void startRound(){
+        wordList = new ArrayList(teams.getWordsList());
+        Collections.shuffle(wordList);
+
+        String popupMessage;
+        if(seconds == 0){seconds = 1;}
+
+        if(round == 1) {
+            popupMessage = "You will have 30 seconds to guess as many words as possible. \n \n";
+        }
+        else {
+            popupMessage = "All the words have been guessed. You still have " + seconds +
+                    " seconds for the next round. \n \n" ;
+        }
+
+
+        AlertDialog.Builder nextPlayerPopUp = new AlertDialog.Builder(timerActivity.this);
+
+        nextPlayerPopUp.setMessage(popupMessage)
+                .setCancelable(false)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int intDialogPositive) {
+                        //finish();
+                        dialogInterface.cancel();
+                    }
+                })
+                .setNegativeButton("Read Rules", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialogInterface, int intDialogNegative) {
+                        AlertDialog.Builder nextPlayerPopUp2 = new AlertDialog.Builder(timerActivity.this);
+                        nextPlayerPopUp2.setMessage( roundName(round)[1] +
+                                System.getProperty("line.separator"))
+                                .setCancelable(false)
+                                .setPositiveButton("Start Round", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface2, int intDialogPositive2) {
+
+                                        dialogInterface2.cancel();
+                                    }
+                                });
+
+                        AlertDialog title2 = nextPlayerPopUp2.create();
+                        title2.setTitle("Rules Round " + round + ": " + roundName(round)[0]);
+                        title2.show();
+
+                        dialogInterface.cancel();
+
+                    }
+                });
+
+        AlertDialog title = nextPlayerPopUp.create();
+        title.setTitle("Round " + round + ": " + roundName(round)[0]);
+        title.show();
+        cancelTimer();
+
     }
 
     public String[] roundName(int round){
