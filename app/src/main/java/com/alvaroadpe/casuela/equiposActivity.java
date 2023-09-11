@@ -39,7 +39,7 @@ public class equiposActivity extends AppCompatActivity {
         ((Button)findViewById(R.id.confirmButton2)).setEnabled(false);
         ((Button)findViewById(R.id.addWordButton)).setEnabled(true);
         ((Button)findViewById(R.id.resetButton2)).setEnabled(false);
-        ((TextView) findViewById(R.id.descriptionTextView)).setText("Es el turno de " + teams.getPlayersList().get(playerNumber) + " de escribir sus 3 palabras.");
+        ((TextView) findViewById(R.id.descriptionTextView)).setText("It is " + teams.getPlayersList().get(playerNumber) + "'s turn to write 3 words.");
     }
 
     List<String> individualWordList = new ArrayList<String>();
@@ -53,14 +53,14 @@ public class equiposActivity extends AppCompatActivity {
             String input = t.getText().toString();
 
             if (input.equals("") || input.contains(" ")) {
-                Toast.makeText(this, "NOMBRE VACIO O CON ESPACIOS", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "EMPTY NAME OR WITH SPACES", Toast.LENGTH_LONG).show();
                 ((TextView) findViewById(R.id.wordSource)).setText("");
             }
 
             else{
                 individualWordList.add(0,input);
 
-                StringBuilder playerWords = new StringBuilder("Palabras:\n");
+                StringBuilder playerWords = new StringBuilder("WORDS:\n");
                 for (int i = 0; i < individualWordList.size(); i++) {
                     playerWords.append("    ").append(individualWordList.get(i)).append(newLine);
                 }
@@ -76,7 +76,7 @@ public class equiposActivity extends AppCompatActivity {
         if (contador > 2){
             v.setEnabled(false);
             Button b = (Button) v;
-            b.setText("3 PALABRAS YA INTRODUCIDAS");
+            b.setText("3 WORDS ALREADY WRITTEN");
             ((Button)findViewById(R.id.confirmButton2)).setEnabled(true);
 
         }
@@ -87,7 +87,7 @@ public class equiposActivity extends AppCompatActivity {
         individualWordList.clear();
         ((TextView)findViewById(R.id.wordSource)).setText("");
         ((TextView)findViewById(R.id.palabras)).setText("");
-        ((Button)findViewById(R.id.addWordButton)).setText("AÑADIR PALABRA");
+        ((Button)findViewById(R.id.addWordButton)).setText("ADD WORD");
         ((Button)findViewById(R.id.resetButton2)).setEnabled(false);
         ((Button)findViewById(R.id.addWordButton)).setEnabled(true);
         ((Button)findViewById(R.id.confirmButton2)).setEnabled(false);
@@ -107,7 +107,7 @@ public class equiposActivity extends AppCompatActivity {
         individualWordList.clear();
         ((TextView)findViewById(R.id.wordSource)).setText("");
         ((TextView)findViewById(R.id.palabras)).setText("");
-        ((Button)findViewById(R.id.addWordButton)).setText("AÑADIR PALABRA");
+        ((Button)findViewById(R.id.addWordButton)).setText("ADD WORD");
         ((Button)findViewById(R.id.resetButton2)).setEnabled(false);
         ((Button)findViewById(R.id.addWordButton)).setEnabled(true);
         ((Button)findViewById(R.id.confirmButton2)).setEnabled(false);
@@ -118,9 +118,9 @@ public class equiposActivity extends AppCompatActivity {
             playerNumber = playerNumber + 1;
 
             AlertDialog.Builder nextPlayerPopUp = new AlertDialog.Builder(equiposActivity.this);
-            nextPlayerPopUp.setMessage("Pasale el móbil a " + playerlist.get(playerNumber))
+            nextPlayerPopUp.setMessage("Pass the device to " + playerlist.get(playerNumber))
                     .setCancelable(false)
-                    .setPositiveButton("Soy " + playerlist.get(playerNumber), new DialogInterface.OnClickListener() {
+                    .setPositiveButton("I am " + playerlist.get(playerNumber), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             //finish();
@@ -128,10 +128,10 @@ public class equiposActivity extends AppCompatActivity {
                         }
                     });
             AlertDialog title = nextPlayerPopUp.create();
-            title.setTitle("Siguiente jugador");
+            title.setTitle("Next Player");
             title.show();
 
-            ((TextView) findViewById(R.id.descriptionTextView)).setText("Es el turno de " + teams.getPlayersList().get(playerNumber) + " de escribir sus 3 palabras.");
+            ((TextView) findViewById(R.id.descriptionTextView)).setText("It is " + teams.getPlayersList().get(playerNumber) + "'s turn to write 3 words.");
         }
         else{
             ((TextView) findViewById(R.id.descriptionTextView)).setText("");

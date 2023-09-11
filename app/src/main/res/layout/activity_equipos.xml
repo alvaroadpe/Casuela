@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
         android:ems="10"
-        android:hint="Escribir Palabra"
+        android:hint="Write word"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,7 +53,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:onClick="addWord"
-        android:text="AÑADIR PALABRA"
+        android:text="ADD WORD"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/wordSource" />
@@ -66,7 +66,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:onClick="confirm"
-        android:text="CONFIRMAR"
+        android:text="CONFIRM"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/resetButton2"
         app:layout_constraintTop_toBottomOf="@+id/addWordButton" />
@@ -77,7 +77,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:onClick="erase"
-        android:text="BORRAR"
+        android:text="ERASE"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/confirmButton2" />
 
@@ -86,7 +86,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="TextView"
+        android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

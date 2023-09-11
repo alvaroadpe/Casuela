@@ -100,23 +100,23 @@ public class timerActivity extends AppCompatActivity {
 
                     if(seconds == 0){seconds = 1;}
                     AlertDialog.Builder nextPlayerPopUp = new AlertDialog.Builder(timerActivity.this);
-                    nextPlayerPopUp.setMessage("Has baby adivinado todas las palabras, pero te sobran " + seconds +
-                            " segundos que podras usar en la siguiente ronda. \n \n")
+                    nextPlayerPopUp.setMessage("All the words have been guessed. You still have " + seconds +
+                            " seconds for the next round. \n \n")
                             .setCancelable(false)
-                            .setPositiveButton("Siguiente ronda", new DialogInterface.OnClickListener() {
+                            .setPositiveButton("Next Round", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int intDialogPositive) {
                                     //finish();
                                     dialogInterface.cancel();
                                 }
                             })
-                            .setNegativeButton("Ver reglas", new DialogInterface.OnClickListener() {
+                            .setNegativeButton("Read Rules", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialogInterface, int intDialogNegative) {
                                     AlertDialog.Builder nextPlayerPopUp2 = new AlertDialog.Builder(timerActivity.this);
                                     nextPlayerPopUp2.setMessage( roundName(round)[1] +
                                             System.getProperty("line.separator"))
                                             .setCancelable(false)
-                                            .setPositiveButton("Empezar ronda", new DialogInterface.OnClickListener() {
+                                            .setPositiveButton("Start Round", new DialogInterface.OnClickListener() {
                                                 @Override
                                                 public void onClick(DialogInterface dialogInterface2, int intDialogPositive2) {
 
@@ -125,7 +125,7 @@ public class timerActivity extends AppCompatActivity {
                                             });
 
                                     AlertDialog title2 = nextPlayerPopUp2.create();
-                                    title2.setTitle("Reglas Ronda " + round + ": " + roundName(round)[0]);
+                                    title2.setTitle("Rules Round " + round + ": " + roundName(round)[0]);
                                     title2.show();
 
                                     dialogInterface.cancel();
@@ -134,7 +134,7 @@ public class timerActivity extends AppCompatActivity {
                             });
 
                     AlertDialog title = nextPlayerPopUp.create();
-                    title.setTitle("Cambio a Ronda " + round + ": " + roundName(round)[0]);
+                    title.setTitle("Change to Round " + round + ": " + roundName(round)[0]);
                     title.show();
                     cancelTimer();
                 }
@@ -160,8 +160,8 @@ public class timerActivity extends AppCompatActivity {
                     + "\n \n";
 
              */
-            playersText.append("Equipo " + (i+1) + ":                            " + "" +
-                    (teams.getScore(i) + teams.getScore((i+quantity/2))) + " puntos" + "\n    " +
+            playersText.append("Team " + (i+1) + ":                            " + "" +
+                    (teams.getScore(i) + teams.getScore((i+quantity/2))) + " points" + "\n    " +
                     teams.getPlayersList().get(i) + "  &  " +
                     teams.getPlayersList().get((i+quantity/2)));
 
@@ -184,7 +184,7 @@ public class timerActivity extends AppCompatActivity {
                 });
 
         AlertDialog title2 = nextPlayerPopUp2.create();
-        title2.setTitle("Marcador");
+        title2.setTitle("Scoreboard");
         title2.show();
     }
 
@@ -199,9 +199,9 @@ public class timerActivity extends AppCompatActivity {
         ((Button)findViewById(R.id.scoreButton)).setEnabled(true);
 
         ((TextView)findViewById(R.id.roundTextView))
-                .setText("Ronda " + round + ": " + roundName(round)[0]);
+                .setText("Round " + round + ": " + roundName(round)[0]);
         ((TextView)findViewById(R.id.playerTurnTextView))
-                .setText("Turno de " + playerList.get(playerNumber));
+                .setText("Turn of " + playerList.get(playerNumber));
 
     }
     @SuppressLint("SetTextI18n")
@@ -213,11 +213,11 @@ public class timerActivity extends AppCompatActivity {
         ((Button)findViewById(R.id.guessedWordButton)).setEnabled(false);
         ((Button)findViewById(R.id.scoreButton)).setEnabled(true);
 
-        ((TextView)findViewById(R.id.roundTextView)).setText("FIN DEL JUEGO");
+        ((TextView)findViewById(R.id.roundTextView)).setText("End of the game");
         ((TextView)findViewById(R.id.playerTurnTextView)).setText("");
         ((TextView)findViewById(R.id.timerTextView)).setText("");
         ((TextView)findViewById(R.id.wordTextView)).setText("");
-        ((Button)findViewById(R.id.startButton)).setText("Reiniciar el juego");
+        ((Button)findViewById(R.id.startButton)).setText("Restart the game");
 
         watchScores();
     }
@@ -226,30 +226,30 @@ public class timerActivity extends AppCompatActivity {
         String name;
         String description;
         if(round == 1){
-            name = "Descripción";
-            description = "Explicacion de la ronda: \n" +
-                    "En esta ronda tendrás 30 segundos para describir la palabra que te salga a tu compañero de equipo. " +
-                    "Puedes usar las palabras que quieras a excepcion de las que tengan la misma base que la palabra siendo descrita. " +
-                    "Si tu compañero adivina la palabra presiona el boton ADIVINADA para ganar un punto y obtener una nueva palabra para adivinar. " +
-                    "Si no entiendes la palabra, presiona el boton OTRA PALABRA para cabmiarla.";
+            name = "Description";
+            description = "Explanation of the round: \n" +
+                    "During this round you will have 30 seconds to describe the word that will appear in your screen to your teammate. " +
+                    "The only words you cannot use are the ones with the same base as the word being described. " +
+                    "If your teammate guesses the word, press the GUESSED button to earn a point and get a new word to guess. " +
+                    "If you don't understand the word, press the SKIP button to switch words. " ;
         }
         else if(round == 2){
-            name = "Una sola palabra";
-            description = "Explicacion de la ronda: \n" +
-                    "En esta ronda volveran a salir las palabras de la ronda anterior, " +
-                    "pero solo podras decir una palabra para que tu compañero adivine la palabra que te ha tocado. " +
-                    "Puedes usar la palabra que quieras a excepcion de las que tengan la misma base que la palabra siendo descrita. " +
-                    "Si tu compañero adivina la palabra presiona el boton ADIVINADA para ganar un punto y obtener una nueva palabra para adivinar. " +
-                    "Si no entiendes la palabra, presiona el boton OTRA PALABRA para cabmiarla.";
+            name = "Single Word";
+            description = "Explanation of the round: \n" +
+                    "During this round, all the words from the previous round will reappear, " +
+                    "But you can only use a single word to describe the word you teammate has to guess. " +
+                    "The only words you cannot use are the ones with the same base as the word being described. " +
+                    "If your teammate guesses the word, press the GUESSED button to earn a point and get a new word to guess. " +
+                    "If you don't understand the word, press the SKIP button to switch words. " ;
         }
         else{
-            name = "Mímica";
-            description = "Explicacion de la ronda: \n" +
-                    "En esta ronda volveran a salir las palabras de la ronda anterior, " +
-                    "pero deberas actuar la palabra que te ha tocado. " +
-                    "No está permitido hablar o hacer sonidos durante esta ronda. " +
-                    "Si tu compañero adivina la palabra presiona el boton ADIVINADA para ganar un punto y obtener una nueva palabra para adivinar. " +
-                    "Si no entiendes la palabra, presiona el boton OTRA PALABRA para cabmiarla.";
+            name = "Charades";
+            description = "Explanation of the round: \n" +
+                    "During this round, all the words from the previous round will reappear, " +
+                    "but you will have to act out the words. " +
+                    "It is NOT allowed to talk or make any noises. " +
+                    "If your teammate guesses the word, press the GUESSED button to earn a point and get a new word to guess. " +
+                    "If you don't understand the word, press the SKIP button to switch words. " ;
         }
         return new String[]{name, description};
     }
@@ -272,11 +272,11 @@ public class timerActivity extends AppCompatActivity {
                 else { playerNumber = 0; }
 
                 AlertDialog.Builder nextPlayerPopUp = new AlertDialog.Builder(timerActivity.this);
-                nextPlayerPopUp.setMessage("Se acabó el tiempo y tu turno :(" + System.getProperty("line.separator") +
-                        "Pasale el móbil a " + playerList.get(playerNumber)
+                nextPlayerPopUp.setMessage("Time's up, and your turn is over :(" + System.getProperty("line.separator") +
+                        "Hand the device to " + playerList.get(playerNumber)
                         + System.getProperty("line.separator") + System.getProperty("line.separator"))
                         .setCancelable(false)
-                        .setPositiveButton("Soy " + playerList.get(playerNumber), new DialogInterface.OnClickListener() {
+                        .setPositiveButton("I am " + playerList.get(playerNumber), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 //finish();
@@ -284,7 +284,7 @@ public class timerActivity extends AppCompatActivity {
                             }
                         });
                 AlertDialog title = nextPlayerPopUp.create();
-                title.setTitle("Ronda " + round + ": " + roundName(round)[0]);
+                title.setTitle("Round " + round + ": " + roundName(round)[0]);
                 title.show();
 
                 resetTimerActivity();

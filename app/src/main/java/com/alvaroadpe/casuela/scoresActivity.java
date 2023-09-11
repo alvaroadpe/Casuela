@@ -30,7 +30,7 @@ public class scoresActivity extends AppCompatActivity {
         StringBuilder playersText = new StringBuilder();
         int i = 0;
         while (i<quantity/2){
-            String nextTeam = "Equipo " + (i+1) + "\n    " + playersList.get(i) + "  &  " +
+            String nextTeam = "Team " + (i+1) + "\n    " + playersList.get(i) + "  &  " +
                     playersList.get((i+playersList.size()/2)) + "\n";
             playersText.append("\n");
             i += 1;

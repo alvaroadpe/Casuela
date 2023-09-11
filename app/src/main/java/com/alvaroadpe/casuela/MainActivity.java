@@ -19,7 +19,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String extraTeams = "com.example.casuela.extraTeams";
+    public static final String extraTeams = "com.casuela.extraTeams";
     private teams teams;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,14 +44,14 @@ public class MainActivity extends AppCompatActivity {
             String input = t.getText().toString();
 
             if (input.equals("") || input.contains(" ")) {
-                Toast.makeText(this, "NOMBRE VACIO O CON ESPACIOS", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "EMPTY NAME OR WITH SPACES", Toast.LENGTH_LONG).show();
                 ((TextView) findViewById(R.id.source)).setText("");
             }
 
             else{
                 teams.addPlayer(input);
 
-                StringBuilder playerNames = new StringBuilder("Jugadores:\n");
+                StringBuilder playerNames = new StringBuilder("PLAYERS:\n");
                 for (int i = 0; i < teams.getPlayersList().size(); i++) {
                     playerNames.append("    ").append(teams.getPlayersList().get(i)).append(newLine);
                 }
@@ -61,14 +61,14 @@ public class MainActivity extends AppCompatActivity {
                 //Toast.makeText(this, input + " añadido", Toast.LENGTH_LONG).show();
                 ((TextView) findViewById(R.id.source)).setText("");
                 ((Button)findViewById(R.id.resetButton)).setEnabled(true);
-                ((Button)findViewById(R.id.equiposButton)).setText("CREAR EQUIPOS");
+                ((Button)findViewById(R.id.equiposButton)).setText("CREATE TEAMS");
                 contador = contador + 1;
             }
         }
         else {
             v.setEnabled(false);
             Button b = (Button) v;
-            b.setText("MAXIMO NUMERO DE JUGADORES");
+            b.setText("MAXIMUM NUMBER OF PLAYERS");
         }
 
         if (contador == 4)
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
         StringBuilder playersText = new StringBuilder();
         int i = 0;
         while (i<quantity/2){
-            String nextTeam = "Equipo " + (i+1) + newLine + "    " + playersList.get(i) + newLine + "    " +
+            String nextTeam = "Team " + (i+1) + newLine + "    " + playersList.get(i) + newLine + "    " +
                     playersList.get(i+quantity/2) + newLine;
             playersText.append(nextTeam);
 
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
         ((TextView)findViewById(R.id.nombres)).setText(playersText.toString());
         ((TextView)findViewById(R.id.source)).setText("");
         Button b = (Button) v;
-        b.setText("REHACER LOS EQUIPOS");
+        b.setText("REDO THE TEAMS");
 
         ((Button)findViewById(R.id.confirmButton)).setEnabled(true);
 
@@ -116,8 +116,8 @@ public class MainActivity extends AppCompatActivity {
         teams.eraseWords();
         ((TextView)findViewById(R.id.source)).setText("");
         ((TextView)findViewById(R.id.nombres)).setText("");
-        ((Button)findViewById(R.id.nameButton)).setText("AÑADIR");
-        ((Button)findViewById(R.id.equiposButton)).setText("CREAR EQUIPOS");
+        ((Button)findViewById(R.id.nameButton)).setText("ADD");
+        ((Button)findViewById(R.id.equiposButton)).setText("CREATE TEAMS");
         ((Button)findViewById(R.id.resetButton)).setEnabled(false);
         ((Button)findViewById(R.id.equiposButton)).setEnabled(false);
         ((Button)findViewById(R.id.confirmButton)).setEnabled(false);

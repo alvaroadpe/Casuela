@@ -19,11 +19,11 @@
 
     <Button
         android:id="@+id/guessedWordButton"
-        android:layout_width="wrap_content"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="50dp"
         android:onClick="guessedWord"
-        android:text="Adivinada"
+        android:text="GUESSED"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/nextWordButton" />
 
@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:onClick="startTimer"
-        android:text="EMPEZAR"
+        android:text="START"
         app:layout_constraintEnd_toEndOf="@+id/guessedWordButton"
         app:layout_constraintTop_toBottomOf="@+id/guessedWordButton" />
 
@@ -49,12 +49,12 @@
 
     <Button
         android:id="@+id/nextWordButton"
-        android:layout_width="wrap_content"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="50dp"
         android:onClick="nextWord"
-        android:text="OTRA PALABRA"
+        android:text="SKIP"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/wordTextView" />
 
@@ -85,7 +85,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
         android:onClick="watchScoresButton"
-        android:text="marcador"
+        android:text="SCORES"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/nextWordButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>
